@@ -34,16 +34,7 @@ $clienti = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <title>Gestiune Clienți Fitness</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        .nav { margin-bottom: 20px; background: #333; padding: 10px; }
-        .nav a { color: white; text-decoration: none; margin-right: 15px; }
-        .form-container { background: #f9f9f9; padding: 15px; border: 1px solid #ddd; }
-        input { margin: 5px 0; padding: 5px; width: 200px; display:block; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
