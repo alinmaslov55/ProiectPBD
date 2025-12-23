@@ -19,3 +19,7 @@ Proiectarea bazelor de date - proiect 13
 1. de verificat da toate cerintele sunt complete
 
 ### Efectuate
+
+1. Am verificat cerintele sa fie complete
+- a fost nevoie de schimbare la sql-uri
+2. Am modificat rapoarte.php sa afiseze cerinta rezolvata

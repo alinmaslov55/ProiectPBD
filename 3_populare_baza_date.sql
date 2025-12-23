@@ -2,15 +2,19 @@
 USE fitness_db;
 
 -- Stergem datele vechi daca exista (pentru a nu avea duplicate la re-rulare)
-DELETE FROM abonamente;
-DELETE FROM clienti;
+SET FOREIGN_KEY_CHECKS = 0; -- Dezactivăm verificarea cheilor externe pentru a putea goli tabelele
+
+TRUNCATE TABLE abonamente;
+TRUNCATE TABLE clienti;
+
+SET FOREIGN_KEY_CHECKS = 1; -- Reactivăm verificările
 
 -- 1. Inserare Clienti (CNP trebuie sa aiba 13 caractere fix)
 INSERT INTO clienti (CNP, nume, prenume, adresa, telefon, disponibil) VALUES
 ('1900101123456', 'Popescu', 'Ion', 'Str. Libertatii 10', '0722111111', 500.00),
-('2920505123456', 'Ionescu', 'Maria', 'Bd. Unirii 20', '0744222222', 150.00),
-('1880808123456', 'Georgescu', 'Vlad', 'Aleea Rozelor 5', '0755333333', 0.00),
-('2951212123456', 'Dumitrescu', 'Ana', 'Calea Victoriei 100', '0766444444', 2000.00);
+('2920505123456', 'Ionescu', 'Maria', 'Bd. Unirii 20', '0744222222', 1550.00),
+('1880808123456', 'Georgescu', 'Vlad', 'Aleea Rozelor 5', '0755333333', 100.00),
+('2951212123456', 'Dumitrescu', 'Ana', 'Calea Victoriei 100', '0766444444', 4000.00);
 
 -- 2. Inserare Abonamente (Date strategice)
 
