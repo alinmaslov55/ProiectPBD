@@ -12,76 +12,109 @@ $total_incasari = $pdo->query("SELECT SUM(suma_incasata) FROM abonamente")->fetc
 <head>
     <meta charset="UTF-8">
     <title>Fitness Management Dashboard</title>
-    <link rel="stylesheet" href="style.css"> <style>
-        /* Stiluri specifice doar pentru dashboard */
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-            border-top: 5px solid #3498db;
-        }
-        .card h3 { border: none; color: #7f8c8d; font-size: 0.9em; text-transform: uppercase; }
-        .card .number { font-size: 2.5em; font-weight: bold; color: #2c3e50; margin: 10px 0; }
-        .btn-link {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .btn-link:hover { background-color: #2980b9; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="nav">
-        <a href="index.php">Acasă</a>
-        <a href="clienti.php">Clienți</a>
-        <a href="abonamente.php">Abonamente & Plăți</a>
-        <a href="rapoarte.php">Rapoarte</a>
-    </div>
-
-    <h1>Panou de Control (Dashboard)</h1>
-    <p>Bine ai venit în sistemul de evidență al centrului de fitness.</p>
-
-    <div class="dashboard-grid">
-        <div class="card">
-            <h3>Total Clienți</h3>
-            <div class="number"><?= $count_clienti ?></div>
-            <a href="clienti.php" class="btn-link">Gestionează Clienți</a>
-        </div>
-
-        <div class="card" style="border-top-color: #27ae60;">
-            <h3>Abonamente Emise</h3>
-            <div class="number"><?= $count_abonamente ?></div>
-            <a href="abonamente.php" class="btn-link">Înregistrează Plată</a>
-        </div>
-
-        <div class="card" style="border-top-color: #f39c12;">
-            <h3>Total Încasări</h3>
-            <div class="number"><?= number_format($total_incasari, 2) ?> <small>RON</small></div>
-            <a href="rapoarte.php" class="btn-link">Vezi Analiză</a>
-        </div>
-    </div>
-
-    <div style="margin-top: 40px;">
-        <h2>Scurtături Tehnice</h2>
-        <ul>
-            <li>Baza de date rulează pe: <strong>MySQL (InnoDB)</strong></li>
-            <li>Conexiune: <strong>PDO (Secure)</strong></li>
-            <li>Logică Business: <strong>Triggere SQL active</strong></li>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Evidență Abonamente</a>
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button> -->
+        <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+            <a class="nav-link active" href="index.php">Home
+                <span class="visually-hidden">(current)</span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="clienti.php">Clienți</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="abonamente.php">Abonamente</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="rapoarte.php">Rapoarte</a>
+            </li>
         </ul>
+        </div>
     </div>
+    </nav>
+
+
+
+    <div class="container-fluid py-4">
+    <div class="mb-4">
+        <h1 class="h2">Panou de Control (Dashboard)</h1>
+        <p class="text-muted">Bine ai venit în sistemul de evidență al centrului de fitness.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-12 col-md-4">
+            <div class="card h-100 border-primary shadow-sm">
+                <div class="card-header bg-transparent border-primary text-primary fw-bold">
+                    Statistici
+                </div>
+                <div class="card-body text-center d-flex flex-column justify-content-center">
+                    <h5 class="card-title text-secondary">Total Clienți</h5>
+                    <p class="display-4 fw-bold text-dark my-3">
+                        <?= $count_clienti ?>
+                    </p>
+                    <a href="clienti.php" class="btn btn-primary w-100 mt-auto">
+                        Gestionează Clienți
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card h-100 border-success shadow-sm">
+                <div class="card-header bg-transparent border-success text-success fw-bold">
+                    Activitate
+                </div>
+                <div class="card-body text-center d-flex flex-column justify-content-center">
+                    <h5 class="card-title text-secondary">Abonamente Emise</h5>
+                    <p class="display-4 fw-bold text-dark my-3">
+                        <?= $count_abonamente ?>
+                    </p>
+                    <a href="abonamente.php" class="btn btn-outline-success w-100 mt-auto">
+                        Înregistrează Plată
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card h-100 border-warning shadow-sm">
+                <div class="card-header bg-transparent border-warning text-warning fw-bold">
+                    Finanțe
+                </div>
+                <div class="card-body text-center d-flex flex-column justify-content-center">
+                    <h5 class="card-title text-secondary">Total Încasări</h5>
+                    <p class="display-5 fw-bold text-dark my-3">
+                        <?= number_format($total_incasari, 2) ?> <small class="fs-6 text-muted">RON</small>
+                    </p>
+                    <a href="rapoarte.php" class="btn btn-outline-warning text-dark w-100 mt-auto">
+                        Vezi Analiză
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <div class="alert alert-light border shadow-sm">
+            <h4 class="alert-heading h5"><i class="bi bi-cpu"></i> Scurtături Tehnice</h4>
+            <hr>
+            <ul class="list-group list-group-flush bg-transparent">
+                <li class="list-group-item bg-transparent">Baza de date rulează pe: <span class="badge bg-secondary">MySQL (InnoDB)</span></li>
+                <li class="list-group-item bg-transparent">Conexiune: <span class="badge bg-success">PDO (Secure)</span></li>
+                <li class="list-group-item bg-transparent">Logică Business: <span class="badge bg-info text-dark">Triggere SQL active</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
