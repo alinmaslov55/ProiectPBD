@@ -7,6 +7,7 @@ Proiectarea bazelor de date - proiect 13
 1. de adaugat alte modificari(logice)
 
     - posibilitate de adaugare sold
+    - adaugare js ca sa verifice validitatea formularelor de adaugare
 
 ### Efectuate
 
