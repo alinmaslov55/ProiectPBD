@@ -18,7 +18,7 @@ $sql_detaliat = "SELECT c.nume, c.prenume, a.serviciu, a.data_achizitie,
                         END AS status_plata
                  FROM clienti c 
                  JOIN abonamente a ON c.CNP = a.CNP 
-                 ORDER BY c.nume ASC, c.prenume ASC, a.data_achizitie ASC";
+                ORDER BY c.nume ASC, c.prenume ASC, a.data_achizitie ASC, rest_plata DESC;
 $res_detaliat = $pdo->query($sql_detaliat)->fetchAll();
 
 // --- CERINȚA 10: CLIENTUL CU CELE MAI MULTE DATORII + PROCENT ---
