@@ -44,7 +44,12 @@ $sql_complex = "
     AND (
         COUNT(a.id) >= 4 
         OR 
-        (SUM(a.pret) > 1000 AND TIMESTAMPDIFF(YEAR, MIN(a.data_achizitie), MAX(a.data_achizitie)) <= 1)
+        (
+            -- Calculam suma doar pentru abonamentele facute in primii 2 ani de la prima achizitie
+            SUM(CASE 
+                WHEN a.data_achizitie <= DATE_ADD((SELECT MIN(data_achizitie) FROM abonamente WHERE CNP = c.CNP), INTERVAL 2 YEAR) 
+                THEN a.pret ELSE 0 END) > 1000
+        )
     )
 ";
 $res_complex = $pdo->query($sql_complex)->fetchAll();

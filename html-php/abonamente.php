@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['adauga_abonament'])) {
             ':serviciu' => $_POST['serviciu'],
             ':pret' => $_POST['pret']
         ]);
+        $stmt->closeCursor();
         $message = "<div style='color:green; margin-bottom:15px;'>Abonament înregistrat! Soldul a fost actualizat automat.</div>";
     } catch (PDOException $e) {
         $message = "<div style='color:red; margin-bottom:15px;'>Eroare: " . $e->getMessage() . "</div>";
