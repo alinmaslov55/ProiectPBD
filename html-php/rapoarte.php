@@ -11,14 +11,14 @@ $res_achitati = $pdo->query($sql_achitati)->fetchAll();
 // --- CERINȚA 6: RAPORT DETALIAT ORDONAT ---
 $sql_detaliat = "SELECT c.nume, c.prenume, a.serviciu, a.data_achizitie, 
                         a.pret, a.suma_incasata,
-                        get_rest_plata(c.CNP, a.serviciu) AS rest_plata, -- AICI FOLOSEȘTI FUNCȚIA cerinta 8
+                        get_rest_plata(c.CNP, a.serviciu) AS rest_plata, -- AICI FOLOSIM FUNCȚIA cerinta 8
                         CASE 
                             WHEN a.suma_incasata = a.pret THEN 'ACHITAT'
                             ELSE 'RESTANT'
                         END AS status_plata
                  FROM clienti c 
                  JOIN abonamente a ON c.CNP = a.CNP 
-                ORDER BY c.nume ASC, c.prenume ASC, a.data_achizitie ASC, rest_plata DESC;
+                ORDER BY c.nume ASC, c.prenume ASC, a.data_achizitie ASC, rest_plata DESC";
 $res_detaliat = $pdo->query($sql_detaliat)->fetchAll();
 
 // --- CERINȚA 10: CLIENTUL CU CELE MAI MULTE DATORII + PROCENT ---
