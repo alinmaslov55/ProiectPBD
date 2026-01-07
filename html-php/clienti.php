@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['adauga_client'])) {
 }
 
 // --- 3. AFIȘARE CLIENȚI ---
-$stmt = $pdo->query("SELECT * FROM clienti ORDER BY id DESC"); 
+$stmt = $pdo->query("SELECT * FROM clienti ORDER BY nume ASC");
 $clienti = $stmt->fetchAll();
 ?>
 
