@@ -16,7 +16,7 @@ INSERT INTO clienti (CNP, nume, prenume, adresa, telefon, disponibil) VALUES
 ('1880808123456', 'Georgescu', 'Vlad', 'Aleea Rozelor 5', '0755333333', 100.00),
 ('2951212123456', 'Dumitrescu', 'Ana', 'Calea Victoriei 100', '0766444444', 4000.00);
 
--- 2. Inserare Abonamente (Date strategice)
+-- 2. Inserare Abonamente
 
 -- Client 1 (Popescu) - Totul achitat
 INSERT INTO abonamente (CNP, serviciu, data_achizitie, pret, suma_incasata) VALUES
@@ -28,7 +28,7 @@ INSERT INTO abonamente (CNP, serviciu, data_achizitie, pret, suma_incasata) VALU
 ('2920505123456', 'Fitness Anual', '2023-03-01', 1200.00, 1200.00),
 ('2920505123456', 'Antrenor Personal', '2023-04-01', 500.00, 200.00); -- Rest de plata 300
 
--- Client 3 (Georgescu) - Datornicul suprem (Cerința 10)
+-- Client 3 (Georgescu) - Datornicul (Cerința 10)
 INSERT INTO abonamente (CNP, serviciu, data_achizitie, pret, suma_incasata) VALUES
 ('1880808123456', 'Fitness Lunar', '2023-05-01', 150.00, 50.00),
 ('1880808123456', 'Masaj', '2023-05-05', 100.00, 0.00),

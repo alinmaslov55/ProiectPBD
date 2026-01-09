@@ -1,7 +1,7 @@
 <?php
 require 'db.php';
 
-// --- 1. PROCESARE FORMULAR (ADĂUGARE ABONAMENT) ---
+
 $message = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['adauga_abonament'])) {
     try {
@@ -20,11 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['adauga_abonament'])) {
     }
 }
 
-// --- 2. PRELUARE DATE PENTRU DROPDOWN (Lista Clienți) ---
 $stmt_clienti = $pdo->query("SELECT CNP, nume, prenume, disponibil FROM clienti ORDER BY nume");
 $lista_clienti = $stmt_clienti->fetchAll();
 
-// --- 3. PRELUARE ISTORIC ABONAMENTE (Cu Join pentru Nume) ---
 // Aducem si numele clientului ca sa nu afisam doar CNP-uri
 $sql_istoric = "SELECT a.*, c.nume, c.prenume 
                 FROM abonamente a 
@@ -45,9 +43,6 @@ $istoric = $pdo->query($sql_istoric)->fetchAll();
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Evidență Abonamente</a>
-        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button> -->
         <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
